@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: lightgray;
+  padding: 5px 10px;
+}
+
+.header h1 {
+  font-family: 'Mate SC', serif;
+  font-weight: 500;
+}
+
+
