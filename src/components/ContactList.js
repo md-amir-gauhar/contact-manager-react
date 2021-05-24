@@ -3,13 +3,12 @@ import ContactCard from './ContactCard'
 import { GlobalContext } from '../context/GlobalState'
 
 const ContactList = () => {
-  const contacts = useContext(GlobalContext);
-  console.log(contacts);
+  const { contacts } = useContext(GlobalContext);
   return (
     <div>
       {
         contacts.map(contact => (
-          <ContactCard key={contacts.id} contacts={contacts} />
+          <ContactCard key={contact.id} contact={contact} />
         ))
       }
     </div>
