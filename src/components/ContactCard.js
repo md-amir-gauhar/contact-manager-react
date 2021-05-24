@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import EmailIcon from '@material-ui/icons/Email';
 import { Avatar } from '@material-ui/core';
 import '../styles/contactCard.css';
+import { blue, purple, red, yellow, cyan, lightBlue, lightGreen } from '@material-ui/core/colors';
+
+const color = ["purple", "red", "lightblue", "lightGreen", "lightGreen"];
+
+function random(color) {
+  return color[Math.floor(Math.random() * color.length)];
+}
+
+const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: `${random(color)}`
+  },
+})
 
 const Accordion = withStyles({
   root: {
@@ -48,7 +61,8 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-export default function ContactCard({ name, email }) {
+export default function ContactCard({ contacts }) {
+  const classes = useStyles();
   const [expanded, setExpanded] = useState('');
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -60,17 +74,22 @@ export default function ContactCard({ name, email }) {
       <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <div className="contactCard-header" >
-            <Avatar src="amir" size="small" />
-            <h1>{name}</h1>
+            <Avatar
+              className={classes.avatar}
+              size="small"
+            >
+              {contacts.name[0]}
+            </Avatar>
+            <h1>{contacts.name}</h1>
           </div>
 
         </AccordionSummary>
         <AccordionDetails>
           <div className="contactCard-email">
             <EmailIcon />
-            <span><strong>:</strong> {email}</span>
+            <span><strong>:</strong> {contacts.email}</span>
           </div>
-          <div className="contactCrad-phone">
+          <div className="contactCard-phone">
 
           </div>
         </AccordionDetails>

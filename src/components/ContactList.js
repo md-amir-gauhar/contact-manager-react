@@ -1,29 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ContactCard from './ContactCard'
+import { GlobalContext } from '../context/GlobalState'
 
 const ContactList = () => {
-  const contacts = [
-    {
-      id: 1,
-      name: "Amir",
-      email: "gauharamir15@gmail.com"
-    },
-    {
-      id: 1,
-      name: "Amir",
-      email: "gauharamir15@gmail.com"
-    },
-    {
-      id: 1,
-      name: "Amir",
-      email: "gauharamir15@gmail.com"
-    },
-  ]
+  const contacts = useContext(GlobalContext);
+  console.log(contacts);
   return (
     <div>
       {
         contacts.map(contact => (
-          <ContactCard name={contact.name} email={contact.email}/>
+          <ContactCard key={contacts.id} contacts={contacts} />
         ))
       }
     </div>

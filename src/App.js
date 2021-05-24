@@ -1,13 +1,17 @@
 import './App.css';
 import Header from './components/Header';
 import TabNav from './components/TabNav';
+import { GlobalProvider } from './context/GlobalState'
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <TabNav />
-    </div>
+    <GlobalProvider>
+      <div className="App">
+        <Header />
+        <TabNav />
+      </div>
+    </GlobalProvider>
+
   );
 }
 
